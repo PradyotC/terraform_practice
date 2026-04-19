@@ -1,0 +1,31 @@
+# Local .terraform folder (contains providers and modules)
+.terraform/
+
+# Terraform State files
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+
+# Configuration variables (often contain secrets)
+*.tfvars
+*.tfvars.json
+
+# Variable definitions files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CSV files (as requested)
+*.csv
+
+# Logs and crash reports
+crash.log
+*.log
+
+# MacOS specific files
+.DS_Store
+
+# BUT allow environment-specific configs
+!dev.tfvars
+!prod.tfvars
