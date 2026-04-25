@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Simple template to create a VPC, Subnet, S3 Bucket, and EC2 Instance."
+
+Resources:
+  # 1. Create the VPC
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+
+  # 2. Create a Subnet inside the VPC
+  MySubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.1.0/24
+
+  # 3. Create the S3 Bucket
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+
+  # 4. Create the EC2 Instance in the Subnet
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      ImageId: ami-0ec10929233384c7f # Standard Amazon Linux 2 AMI
+      SubnetId: !Ref MySubnet
+
+# 5. Show the Outputs after creation
+Outputs:
+  CreatedVpcId:
+    Description: "The ID of the newly created VPC"
+    Value: !Ref MyVPC
+  CreatedBucketName:
+    Description: "The name of the newly created S3 Bucket"
+    Value: !Ref MyS3Bucket
+  CreatedInstanceId:
+    Description: "The ID of the newly created EC2 Instance"
+    Value: !Ref MyEC2Instance
