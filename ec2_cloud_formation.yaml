@@ -1,0 +1,18 @@
+Resources:
+  Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ec10929233384c7f
+      InstanceType: t3.micro
+      KeyName: pradyot
+
+Outputs:
+  myid:
+    Description: "my server id "
+    Value: !Ref Instance
+
+  myip:
+    Value: !GetAtt Instance.PublicIp
+
+  myipdns:
+    Value: !GetAtt Instance.PublicDnsName
