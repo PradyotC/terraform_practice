@@ -1,0 +1,3 @@
+ImageId: "ami-0ec10929233384c7f"
+InstanceType: "t3.micro"
+KeyName: "pradyot"

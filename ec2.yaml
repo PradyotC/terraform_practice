@@ -1,0 +1,13 @@
+Resources:
+  Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0ec10929233384c7f
+      InstanceType: t3.micro
+      KeyName: pradyot
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-myawsbucket-${AWS::AccountId}-pc
+      WebsiteConfiguration:
+        IndexDocument: index.html
